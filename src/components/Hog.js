@@ -4,11 +4,15 @@ import React, { Component } from 'react'
 export default class Hog extends Component {
 
     state = {
-        toggle: false
+        toggle: false,
     }
 
     detailToggle = () => {
         this.setState({ toggle: !this.state.toggle })
+    }
+
+    hideThisHog = (e) => {
+        e.target.parentElement.style.display = 'none'
     }
 
     render() {
@@ -16,7 +20,9 @@ export default class Hog extends Component {
         let filename = name.toLowerCase().replace(/\s/g, '_')
         let pigImage = require(`../hog-imgs/${filename}.jpg`)
         return (
-            <div className="ui card" onClick={this.detailToggle}>
+            <div style={{margin: '20px 0'}}>
+            <button className='ui button' onClick={this.hideThisHog}>Hide this Hog</button>
+            <div className="ui card" style={{margin: '0px 12px'}} onClick={this.detailToggle}>
                 <div className="image">
                     <img src={pigImage} alt="" />
                 </div>
@@ -31,13 +37,14 @@ export default class Hog extends Component {
                                 {specialty}
                             </div>
                             <div className="extra content">
-                                {this.props.hog['highest medal achieved']} and {greased ? 'I am greased' : "I'm not greased"}
+                                {this.props.hog['highest medal achieved']}
                             </div>
                         </div>
                         :
                         null
                     }
                 </div>
+            </div>
             </div>
         )
     }

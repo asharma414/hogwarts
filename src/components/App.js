@@ -4,13 +4,53 @@ import Nav from "./Nav";
 import hogs from "../porkers_data";
 import HelloWorld from "./HelloWorld";
 import Hogwarts from "./Hogwarts";
+import Filter from './Filter';
 
 class App extends Component {
+    state = {
+        data: hogs,
+        ascendWeight: null,
+        ascendName: null
+    }
+
+    toggleGreased = () => {
+        if (this.state.data === hogs) {
+            let greased = this.state.data.filter((h) => h.greased)
+            this.setState({data: greased})
+        } else {
+            this.setState({data: hogs})
+        }
+    }
+
+    sortByName = () => {
+        if (this.state.ascendName) {
+            let sortedName = this.state.data.sort((h1, h2) => {return (h2.name.localeCompare(h1.name))})
+            this.setState({data: sortedName, ascendName: false})
+        } else {
+            let sortedName = this.state.data.sort((h1, h2) => {return (h1.name.localeCompare(h2.name))})
+            this.setState({data: sortedName, ascendName: true})
+        }
+
+
+    }
+
+    sortByWeight = () => {
+
+        if (this.state.ascendWeight) {
+            let sortedWeight = this.state.data.sort((h1, h2) => {return (h2.weight - h1.weight)})
+            this.setState({data: sortedWeight, ascendWeight: false})
+        } else {
+            let sortedWeight = this.state.data.sort((h1, h2) => {return (h1.weight - h2.weight)})
+            this.setState({data: sortedWeight, ascendWeight: true})
+        }
+    }
+
   render() {
     return (
       <div className="App">
         <Nav />
-        <Hogwarts hogs={hogs}/>
+        <Filter toggleGreased={this.toggleGreased} sortByName={this.sortByName} sortByWeight={this.sortByWeight}/>
+        <Hogwarts hogs={this.state.data}/>
       </div>
     );
   }

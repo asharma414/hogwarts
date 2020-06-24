@@ -7,6 +7,7 @@ export default class Filter extends Component {
                 <button style={{margin: '30px 30px'}} className='ui button' onClick={this.props.toggleGreased}>Toggle the greased hogs!</button>
                 <button style={{margin: '30px 30px'}} className='ui button' onClick={this.props.sortByName}>Sort the Hogs by Name!</button>
                 <button style={{margin: '30px 30px'}} className='ui button' onClick={this.props.sortByWeight}>Sort the Hogs by Weight!</button>
+                <button style={{margin: '30px 30px'}} className='ui button' onClick={this.props.randomPigGif.bind}>Show random Pig</button>
             </div>
         )
     }

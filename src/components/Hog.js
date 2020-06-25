@@ -16,7 +16,7 @@ export default class Hog extends Component {
     }
 
     render() {
-        let { name, specialty, greased, weight } = this.props.hog
+        let { name, specialty, weight } = this.props.hog
         let filename = name.toLowerCase().replace(/\s/g, '_')
         let pigImage = require(`../hog-imgs/${filename}.jpg`)
         return (

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../App.css";
 import Nav from "./Nav";
 import hogs from "../porkers_data";
-import HelloWorld from "./HelloWorld";
 import Hogwarts from "./Hogwarts";
 import Filter from './Filter';
 
@@ -45,33 +44,33 @@ class App extends Component {
         }
     }
 
-    randomPigGif(e) {
-        // debugger
-        let a = e.target.parentElement
-        // console.log(this)
-        let pigApi = "https://api.giphy.com/v1/gifs/search?api_key=LAllYPRW3tRajO0YKmQaCRCYWFfxw1Vs&q=pig&limit=10"
-        fetch(pigApi, {
-            headers : { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-             }
+    // randomPigGif(e) {
+    //     // debugger
+    //     let a = e.target.parentElement
+    //     // console.log(this)
+    //     let pigApi = "https://api.giphy.com/v1/gifs/search?api_key=LAllYPRW3tRajO0YKmQaCRCYWFfxw1Vs&q=pig&limit=10"
+    //     fetch(pigApi, {
+    //         headers : { 
+    //           'Content-Type': 'application/json',
+    //           'Accept': 'application/json'
+    //          }
       
-          }).then(res => res.json()).then(data => { 
-            //   data.data[Math.floor(Math.random() * 9)].embed_url
-            //   let img = document.createElement('img')
-            // let a = e.target.parentElement
+    //       }).then(res => res.json()).then(data => { 
+    //         //   data.data[Math.floor(Math.random() * 9)].embed_url
+    //         //   let img = document.createElement('img')
+    //         // let a = e.target.parentElement
 
-            let img = React.createElement('img', {src: data.data[Math.floor(Math.random() * 9)].embed_url})
-            // console.log(this)
-            // console.log(e.target)
-            // console.log(e.target.parentElement)
-            // console.log(e.target.parentElement.nextElementSibling)
+    //         let img = React.createElement('img', {src: data.data[Math.floor(Math.random() * 9)].embed_url})
+    //         // console.log(this)
+    //         // console.log(e.target)
+    //         // console.log(e.target.parentElement)
+    //         // console.log(e.target.parentElement.nextElementSibling)
 
-            //   a.nextElementSibling.appendChild(img)
+    //         //   a.nextElementSibling.appendChild(img)
 
-        })
-          //Math.floor(Math.random() * 9)
-    }
+    //     })
+    //       //Math.floor(Math.random() * 9)
+    // }
 
   render() {
     return (
